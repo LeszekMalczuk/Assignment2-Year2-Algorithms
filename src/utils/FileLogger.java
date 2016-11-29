@@ -23,8 +23,9 @@ public class FileLogger {
 			System.out.println("UserID: "+userTokens[0]+",First Name:"+
 					userTokens[1]+",Surname:" + userTokens[2]+",Age:"+
 					Integer.parseInt(userTokens[3])+",Gender:"+userTokens[4]+",Occupation:"+
-					userTokens[5]);
-
+					userTokens[5]+",zipp code:"+userTokens[6]);
+			 File  datastore = new File("datastoreUsers1.xml");
+			    Serializer serializer = new XMLSerializer(datastore);
 		}else
 		{
 			inUsers.close();
