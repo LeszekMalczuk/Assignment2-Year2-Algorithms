@@ -19,7 +19,7 @@ package controllers;
 	{
 	  public static void main(String[] args) throws Exception
 	  {    
-	    File  datastore = new File("datastore.xml");
+	    File  datastore = new File("datastoreUsers.xml");
 	    Serializer serializer = new XMLSerializer(datastore);
 	    
 	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
