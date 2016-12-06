@@ -35,7 +35,10 @@ package controllers;
 	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
 
 	    Collection<User> users = likeMoviesAPI.getUsers();
-	    System.out.println(users);
+	    System.out.println("\n" + users);
+	    System.out.println("ilosc uzytkownikow  " + users.size() );
+	    System.out.println("numer przypisany do u " + users.hashCode());
+
 	    
 //	    User homer = likeMoviesAPI.getUserByAge(0);
 //	    likeMoviesAPI.createActivity(homer.id, "walk", "tramore", 1000);

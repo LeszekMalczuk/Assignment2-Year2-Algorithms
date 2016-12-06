@@ -5,10 +5,7 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.management.timer.TimerMBean;
-
 import com.google.common.base.Objects;
-
 public class User {
 
 	  static Long   counter = 0l;

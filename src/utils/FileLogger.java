@@ -1,13 +1,16 @@
 package utils;
 
 import java.io.File;
+import java.util.Collection;
 
+import controllers.LikeMoviesAPI;
 import edu.princeton.cs.introcs.In;
+import models.User;
 
 public class FileLogger {
 	
 	public static void users(String[] args) throws Exception {
-	File usersFile = new File("data/genre.dat, data/items.dat, data/occupation.dat, data/ratings5.dat, data/users5.dat");
+	File usersFile = new File("data/users5.dat");
 	In inUsers = new In(usersFile);
 	//each field is separated(delimited) by a '|'
 	String delims = "[|]";
@@ -33,6 +36,35 @@ public class FileLogger {
 	}
 	inUsers.close();
 }
+	//////////////
+//	  public static void main(String[] args) throws Exception
+//	  {    
+//	    File  datastore = new File("datastoreUsers1.xml");
+//	    Serializer serializer = new XMLSerializer(datastore);
+//	    
+//	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
+//	    if (datastore.isFile())
+//	    {
+//	      likeMoviesAPI.load();
+//	    }
+//	    
+//	    int String = 0;
+//		likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
+////        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
+////	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
+////	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
+////	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
+//	    
+//	    
+//	    
+//	    
+//
+//	    Collection<User> users = likeMoviesAPI.getUsers();
+//	    System.out.println(users);
+//	    likeMoviesAPI.store(); 
+//	  }
+//	
+	
 	///////////////
 	public static void moviesList(String[] args) throws Exception {
 	File usersFile = new File("data/items5.dat");
@@ -70,8 +102,8 @@ public class FileLogger {
 	inUsers.close();
 }
 	/////
-	public static void users(String[] args) throws Exception {
-	File usersFile = new File("data/genre.dat, data/items.dat, data/occupation.dat, data/ratings5.dat, data/users5.dat");
+	public static void ratingList(String[] args) throws Exception {
+	File usersFile = new File("data/ratings5.dat");
 	In inUsers = new In(usersFile);
 	//each field is separated(delimited) by a '|'
 	String delims = "[|]";
@@ -84,10 +116,9 @@ public class FileLogger {
 
 		// output user data to console.
 		if (userTokens.length == 7) {
-			System.out.println("UserID: "+userTokens[0]+",First Name:"+
-					userTokens[1]+",Surname:" + userTokens[2]+",Age:"+
-					Integer.parseInt(userTokens[3])+",Gender:"+userTokens[4]+",Occupation:"+
-					userTokens[5]+",zipp code:"+userTokens[6]);
+			System.out.println("UserID: "+userTokens[0]+",IteamID:"+
+					userTokens[1]+",Rating:" + userTokens[2]+",Timestamp:"+
+					Integer.parseInt(userTokens[3]));
 
 		}else
 		{
