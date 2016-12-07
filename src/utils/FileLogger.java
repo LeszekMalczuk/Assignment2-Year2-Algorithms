@@ -1,7 +1,11 @@
 package utils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
+
+import javax.jws.soap.SOAPBinding.Use;
 
 import controllers.LikeMoviesAPI;
 import edu.princeton.cs.introcs.In;
@@ -9,7 +13,11 @@ import models.User;
 
 public class FileLogger {
 	
-	public static void users(String[] args) throws Exception {
+		static ArrayList<User>usersMenu = new ArrayList<>();
+		Scanner inUsers;
+		LikeMoviesAPI  LikeMovieAPI;
+	public static void users(String[] args, LikeMoviesAPI likeMoviesAPI) throws Exception 
+	{
 	File usersFile = new File("data/users5.dat");
 	In inUsers = new In(usersFile);
 	//each field is separated(delimited) by a '|'
@@ -23,47 +31,59 @@ public class FileLogger {
 
 		// output user data to console.
 		if (userTokens.length == 7) {
-			System.out.println("UserID: "+userTokens[0]+",First Name:"+
-					userTokens[1]+",Surname:" + userTokens[2]+",Age:"+
-					Integer.parseInt(userTokens[3])+",Gender:"+userTokens[4]+",Occupation:"+
-					userTokens[5]+",zipp code:"+userTokens[6]);
-
+			User userList = new User();
+			userList.id=Long.parseLong(userTokens[0]);
+			userList.firstName=userTokens[1];
+			userList.surname=userTokens[2];
+			userList.age=Integer.parseInt(userTokens[3]);
+			userList.gender=userTokens[4];
+			userList.ocupational=userTokens[5];
+			
+			usersMenu.add(userList);
+			
+	
 		}else
 		{
 			inUsers.close();
 			throw new Exception("Invalid member length: "+userTokens.length);
 		}
+
+	    Collection<User> users = likeMoviesAPI.getUsers();
+	    System.out.println(users);
+	    likeMoviesAPI.store(); 
+													//System.out.print(userTokens.toString());
 	}
 	inUsers.close();
 }
 	//////////////
-//	  public static void main(String[] args) throws Exception
-//	  {    
-//	    File  datastore = new File("datastoreUsers1.xml");
-//	    Serializer serializer = new XMLSerializer(datastore);
+	  public static void main(String[] args) throws Exception
+	  {    
+	    File  datastore = new File("datastoreUsers1.xml");
+	    Serializer serializer = new XMLSerializer(datastore);
+	    
+	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
+	    if (datastore.isFile())
+	    {
+	      likeMoviesAPI.load();
+	    }
+
+//	  //  int String = 0;
+//	//	likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
+//        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
+//	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
+//	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
+//	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
+//	    likeMoviesAPI.createUser( null, null, 0, null, null);
 //	    
-//	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
-//	    if (datastore.isFile())
-//	    {
-//	      likeMoviesAPI.load();
-//	    }
-//	    
-//	    int String = 0;
-//		likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
-////        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
-////	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
-////	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
-////	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
-//	    
-//	    
-//	    
-//	    
-//
-//	    Collection<User> users = likeMoviesAPI.getUsers();
-//	    System.out.println(users);
-//	    likeMoviesAPI.store(); 
-//	  }
-//	
+	    
+	    
+	    
+
+	    Collection<User> users = likeMoviesAPI.getUsers();
+	    System.out.println(users);
+	    likeMoviesAPI.store(); 
+	  }
+	
 	
 	///////////////
 	public static void moviesList(String[] args) throws Exception {

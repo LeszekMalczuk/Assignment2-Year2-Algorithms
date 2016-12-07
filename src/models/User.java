@@ -17,7 +17,7 @@ public class User {
 	  public String gender;
 	  public String ocupational;
 	  
-	  public Map<Long, Rating> activities = new HashMap<>();
+	  public Map<Long, Rating> rating = new HashMap<>();
 	  
 	  public User()
 	  {
