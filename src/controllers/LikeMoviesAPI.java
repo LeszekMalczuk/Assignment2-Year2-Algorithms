@@ -128,4 +128,9 @@ public class LikeMoviesAPI
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void createActivity(Long id, String string, String string2, int i) {
+		// TODO Auto-generated method stub
+		
+	}
 }

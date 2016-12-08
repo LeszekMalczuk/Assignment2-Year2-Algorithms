@@ -63,41 +63,42 @@ import models.User;
 		   
 		  
 	
-	private static void addMovie() {
-			// TODO Auto-generated method stub
-			
-		}
+//	private static void addMovie() {
+//			// TODO Auto-generated method stub
+//			
+//		}
 
 
 
-		//  public static void main(String[] args) throws Exception
-	//  {    
+		  public static void main1(String[] args) throws Exception
+	  {    
 	    File  datastore = new File("datastoreUsers.xml");
 	    Serializer serializer = new XMLSerializer(datastore);
 	    
-//	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer):
-//	    if (datastore.isFile())
+	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
+	    if (datastore.isFile())
 	    {
-//	      likeMoviesAPI.load();
+	      likeMoviesAPI.load();
 	    }
-//	    
+	    
 //	    likeMoviesAPI.createUser("Leonard", "Hernandes",  24, "M", "technician");
 //	    likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
 //	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
 //	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
 //	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
-//
-//	    Collection<User> users = likeMoviesAPI.getUsers();
-//	    System.out.println("\n" + users);
-//	    System.out.println("ilosc uzytkownikow  " + users.size() );
-//	    System.out.println("numer przypisany do u " + users.hashCode());
-//
-//	    
-//	    User homer = likeMoviesAPI.getUserByAge(0);
-//	    likeMoviesAPI.createActivity(homer.id, "walk", "tramore", 1000);
+
+	    Collection<User> users = likeMoviesAPI.getUsers();
+	    System.out.println("\n" + users);
+	    System.out.println("ilosc uzytkownikow  " + users.size() );
+	    System.out.println("numer przypisany do u " + users.hashCode());
+
 	    
-//	    likeMoviesAPI.store(); 
+	    User homer = likeMoviesAPI.getUserByAge(0);
+	    likeMoviesAPI.createActivity(homer.id, "walk", "tramore", 1000);
+	    
+	    likeMoviesAPI.store(); 
 	  
+	}
 	}
 	
 	//////////////////////////////////////

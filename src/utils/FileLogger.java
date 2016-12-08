@@ -67,14 +67,14 @@ public class FileLogger {
 	      likeMoviesAPI.load();
 	    }
 
-//	  //  int String = 0;
-//	//	likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
-//        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
-//	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
-//	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
-//	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
-//	    likeMoviesAPI.createUser( null, null, 0, null, null);
-//	    
+	  //  int String = 0;
+	//	likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
+        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
+	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
+	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
+	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
+	    likeMoviesAPI.createUser( "Je", "Paker",333, "F", "dupa");
+	    
 	    
 	    
 	    
@@ -85,6 +85,24 @@ public class FileLogger {
 	  }
 	
 	
+	public static ArrayList<User> getUsersMenu() {
+		return usersMenu;
+	}
+	public static void setUsersMenu(ArrayList<User> usersMenu) {
+		FileLogger.usersMenu = usersMenu;
+	}
+	public Scanner getInUsers() {
+		return inUsers;
+	}
+	public void setInUsers(Scanner inUsers) {
+		this.inUsers = inUsers;
+	}
+	public LikeMoviesAPI getLikeMovieAPI() {
+		return LikeMovieAPI;
+	}
+	public void setLikeMovieAPI(LikeMoviesAPI likeMovieAPI) {
+		LikeMovieAPI = likeMovieAPI;
+	}
 	///////////////
 	public static void moviesList(String[] args) throws Exception {
 	File usersFile = new File("data/items5.dat");
