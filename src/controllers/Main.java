@@ -7,7 +7,12 @@ package controllers;
 	import java.io.ObjectOutputStream;
 	import java.util.Collection;
 
-	import utils.Serializer;
+import javax.swing.border.TitledBorder;
+
+import org.omg.CORBA.PRIVATE_MEMBER;
+import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
+
+import utils.Serializer;
 	import utils.XMLSerializer;
 
 	import com.thoughtworks.xstream.XStream;
@@ -21,7 +26,8 @@ import models.User;
 
 	public class Main
 	{
-		 public LikeMoviesAPI likeMovies;
+		// private static Object addMovie;
+		public LikeMoviesAPI likeMovies;
 		   
 		   @Command(description="Add a new User")
 		   public void addUser (@Param(name="firstname") String firstName, @Param(name="lastname") String lastName,
@@ -50,12 +56,21 @@ import models.User;
 		   Main main = new Main();
 		   Shell shell = ShellFactory.createConsoleShell("lm", "Welcome to Like Movie - ?help for instructions", main);
 		   shell.commandLoop();
+		   
+
 		   main.likeMovies.store();
 		   }
 		   
 		  
 	
-	//  public static void main(String[] args) throws Exception
+	private static void addMovie() {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+		//  public static void main(String[] args) throws Exception
 	//  {    
 	    File  datastore = new File("datastoreUsers.xml");
 	    Serializer serializer = new XMLSerializer(datastore);

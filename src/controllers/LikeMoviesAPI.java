@@ -46,7 +46,6 @@ public class LikeMoviesAPI
 		serializer.push(userIndex);
 		serializer.push(ageIndex);
 		serializer.push(genderIndex);
-	//	serializer.push();
 		serializer.push(activitiesIndex);
 		serializer.write(); 
 	}
