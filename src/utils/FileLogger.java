@@ -30,7 +30,7 @@ public class FileLogger {
 		String[] userTokens = userDetails.split(delims);
 
 		// output user data to console.
-		if (userTokens.length == 7) {
+		if (userTokens.length == 6) {
 			User userList = new User();
 			userList.id=Long.parseLong(userTokens[0]);
 			userList.firstName=userTokens[1];

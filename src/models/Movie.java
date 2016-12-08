@@ -19,9 +19,9 @@ public class Movie {
 	
 	public Map<Long, Movie> movieId1 = new HashMap<>();
 	
-	public Movie() 
-	{	
-	}
+//	public Movie() 
+//	{	
+//	}
 	public Movie(String title, String releaseData,String url, long id) {
 		
 		this.id = id; 

@@ -27,7 +27,7 @@ import models.User;
 	public class Main
 	{
 		// private static Object addMovie;
-		public LikeMoviesAPI likeMovies;
+		public LikeMoviesAPI likeMovies = new LikeMoviesAPI(); // it is part fixed to read into memory
 		   
 		   @Command(description="Add a new User")
 		   public void addUser (@Param(name="firstname") String firstName, @Param(name="lastname") String lastName,

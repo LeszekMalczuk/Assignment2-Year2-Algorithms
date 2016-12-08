@@ -92,32 +92,32 @@ public class LikeMoviesAPI
 		ageIndex.remove(user.age);
 	}
 
-	public Rating createActivity(Long id, String type, String location, double distance)
-	{
-		Rating rating = null;
-		Optional<User> user = Optional.fromNullable(userIndex.get(id));
-		if (user.isPresent())
-		{
-			rating = new Rating (type, location, distance);
-			user.get().rating.put(rating.id, rating);
-			activitiesIndex.put(rating.id, rating);
-		}
-		return rating;
-	}
+//	public Rating createActivity(Long user_id, Long iteam_id, Integer rating)
+//	{
+//		Rating rating = null;
+//		Optional<User> user = Optional.fromNullable(userIndex.get(user_id));
+//		if (user.isPresent())
+//		{
+//			rating = new Rating (user_id, iteam_id, rating_of);
+//			user.get().rating.put(rating.id, rating);
+//			activitiesIndex.put(rating.id, rating);
+//		}
+//		return rating;
+//	}
 
 	public Rating getRating (Long id)
 	{
 		return activitiesIndex.get(id);
 	}
 
-	public void addLocation (Long id, float latitude, float longitude)
-	{
-		Optional<Rating> rating = Optional.fromNullable(activitiesIndex.get(id));
-		if (rating.isPresent())
-		{
-			//rating.get().route.add(new Location(latitude, longitude));
-		}
-	}
+//	public void addLocation (Long id, float latitude, float longitude)
+//	{
+//		Optional<Rating> rating = Optional.fromNullable(activitiesIndex.get(id));
+//		if (rating.isPresent())
+//		{
+//			//rating.get().route.add(new Location(latitude, longitude));
+//		}
+//	}
 
 	public void removeUser(Long id) {
 		// TODO Auto-generated method stub
