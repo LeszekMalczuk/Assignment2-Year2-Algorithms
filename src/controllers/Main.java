@@ -33,7 +33,7 @@ import models.User;
 		   public void addUser (@Param(name="firstname") String firstName, @Param(name="lastname") String lastName,
 		  		 			  @Param(name="age") int age, @Param(name="gender") String gender, @Param(name="occupation") String occupation)
 		   {
-		  	 likeMovies.createUser(firstName, lastName, age, gender,  occupation);
+		  	 likeMovies.addUser(firstName, lastName, age, gender,  occupation);
 		   }
 
 		   

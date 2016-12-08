@@ -62,7 +62,7 @@ public class LikeMoviesAPI
 		genderIndex.clear();
 	}
 
-	public User createUser(String firstName, String lastName, int age, String gender, String ocupational) 
+	public User addUser(String firstName, String lastName, int age, String gender, String ocupational) 
 	{
 		User user = new User (firstName, lastName, age, gender, ocupational);
 		userIndex.put(user.id, user);

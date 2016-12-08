@@ -67,19 +67,20 @@ public class FileLogger {
 	      likeMoviesAPI.load();
 	    }
 
-	  //  int String = 0;
+	    int String = 0;
 	//	likeMoviesAPI.createUser(args[userTocens[]], null, String, null, null);
-        likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
-	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
-	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
-	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
-	    likeMoviesAPI.createUser( "Je", "Paker",333, "F", "dupa");
+        likeMoviesAPI.addUser("Melody", "Roberson", 53, "F", "other");
+	    likeMoviesAPI.addUser("Gregory", "Newton", 23, "M", "writer");
+	    likeMoviesAPI.addUser("Oliver", "George", 24, "M", "technician");
+	    likeMoviesAPI.addUser("Jenna", "Parker",33, "F", "other");
+	    likeMoviesAPI.addUser( "Je", "Paker",333, "F", "dupa");
 	    
 	    
 	    
 	    
 
 	    Collection<User> users = likeMoviesAPI.getUsers();
+	    
 	    System.out.println(users);
 	    likeMoviesAPI.store(); 
 	  }
@@ -104,8 +105,11 @@ public class FileLogger {
 		LikeMovieAPI = likeMovieAPI;
 	}
 	///////////////
-	public static void moviesList(String[] args) throws Exception {
-	File usersFile = new File("data/items5.dat");
+	
+	
+	
+	public static void genreList(String[] args) throws Exception {
+	File usersFile = new File("data/genre.dat");
 	In inUsers = new In(usersFile);
 	//each field is separated(delimited) by a '|'
 	String delims = "[|]";
@@ -117,19 +121,16 @@ public class FileLogger {
 		String[] userTokens = userDetails.split(delims);
 
 		// output user data to console.
-		if (userTokens.length == 7) {
-			System.out.println("List of movie ID: "+userTokens[0]+",Movie Title:"+userTokens[1]+
-					",Relase date:" + userTokens[2]+",IMBD Url:" + userTokens[3]+
-					",Unknown:" + userTokens[4]+",Action:" + userTokens[5]+
-					",Adventure:" + userTokens[6]+",Animation:" + userTokens[7]+
-					",Children's:" + userTokens[8]+",Comedy:" + userTokens[9]+
-					",Crime:" + userTokens[10]+",Documentary:" + userTokens[11]+
-					",Drama:" + userTokens[12]+",Fantasy:" + userTokens[13]+
-					",Film-Noir:" + userTokens[14]+",Horror:" + userTokens[15]+
-					",Musical:" + userTokens[16]+",Mystery:" + userTokens[17]+
-					",Romance:" + userTokens[18]+",Sci-Fi:" + userTokens[19]+
-					",Thriller:" + userTokens[20]+",War:" + userTokens[21]+
-					",Western:" + userTokens[22]);
+		if (userTokens.length == 2) {
+			//System.out.println("Genre: "+userTokens[0]+",Number of Genre:"+userTokens[1]);
+			
+			User userList = new User();
+			userList.gender=userTokens[0];
+			userList.nogender=Integer.parseInt(userTokens[1]); // the nogender is a number in the list 
+															   // at the gender
+
+			usersMenu.add(userList);
+			
 
 		}else
 		{
