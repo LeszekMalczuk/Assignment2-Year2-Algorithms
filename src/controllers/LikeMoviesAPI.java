@@ -115,7 +115,7 @@ public class LikeMoviesAPI
 //		Optional<Rating> rating = Optional.fromNullable(activitiesIndex.get(id));
 //		if (rating.isPresent())
 //		{
-//			//rating.get().route.add(new Location(latitude, longitude));
+//			rating.get().route.add(new Location(latitude, longitude));
 //		}
 //	}
 
@@ -129,8 +129,8 @@ public class LikeMoviesAPI
 		
 	}
 
-	public void createActivity(Long id, String string, String string2, int i) {
-		// TODO Auto-generated method stub
-		
-	}
+//	public void createActivity(Long id, String string, String string2, int i) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 }

@@ -28,7 +28,8 @@ import models.User;
 	{
 		// private static Object addMovie;
 		public LikeMoviesAPI likeMovies = new LikeMoviesAPI(); // it is part fixed to read into memory
-		   
+		    File datastor = new File("datastere33.xml");
+		 //   Serializer serializer new XMLSerializer(datastore);
 		   @Command(description="Add a new User")
 		   public void addUser (@Param(name="firstname") String firstName, @Param(name="lastname") String lastName,
 		  		 			  @Param(name="age") int age, @Param(name="gender") String gender, @Param(name="occupation") String occupation)
@@ -57,6 +58,14 @@ import models.User;
 		   Shell shell = ShellFactory.createConsoleShell("lm", "Welcome to Like Movie - ?help for instructions", main);
 		   shell.commandLoop();
 		   
+//		   File  datastore = new File("datastoreUsers11.xml");
+//		    Serializer serializer = new XMLSerializer(datastore);
+//		    
+//		    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
+//		    if (datastore.isFile())
+//		    {
+//		      likeMoviesAPI.load();
+//		    }
 
 		   main.likeMovies.store();
 		   }
@@ -70,35 +79,35 @@ import models.User;
 
 
 
-		  public static void main1(String[] args) throws Exception
-	  {    
-	    File  datastore = new File("datastoreUsers.xml");
-	    Serializer serializer = new XMLSerializer(datastore);
-	    
-	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
-	    if (datastore.isFile())
-	    {
-	      likeMoviesAPI.load();
-	    }
-	    
-//	    likeMoviesAPI.createUser("Leonard", "Hernandes",  24, "M", "technician");
-//	    likeMoviesAPI.createUser("Melody", "Roberson", 53, "F", "other");
-//	    likeMoviesAPI.createUser("Gregory", "Newton", 23, "M", "writer");
-//	    likeMoviesAPI.createUser("Oliver", "George", 24, "M", "technician");
-//	    likeMoviesAPI.createUser("Jenna", "Parker",33, "F", "other");
-
-	    Collection<User> users = likeMoviesAPI.getUsers();
-	    System.out.println("\n" + users);
-	    System.out.println("ilosc uzytkownikow  " + users.size() );
-	    System.out.println("numer przypisany do u " + users.hashCode());
-
-	    
-	    User homer = likeMoviesAPI.getUserByAge(0);
-	    likeMoviesAPI.createActivity(homer.id, "walk", "tramore", 1000);
-	    
-	    likeMoviesAPI.store(); 
-	  
-	}
+//		  public static void main1(String[] args) throws Exception
+//	  {    
+//	    File  datastore = new File("datastoreUsers.xml");
+//	    Serializer serializer = new XMLSerializer(datastore);
+//	    
+//	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
+//	    if (datastore.isFile())
+//	    {
+//	      likeMoviesAPI.load();
+//	    }
+//	    
+//	    likeMoviesAPI.addUser("Leonard", "Hernandes",  24, "M", "technician");
+//	    likeMoviesAPI.addUser("Melody", "Roberson", 53, "F", "other");
+//	    likeMoviesAPI.addUser("Gregory", "Newton", 23, "M", "writer");
+//	    likeMoviesAPI.addUser("Oliver", "George", 24, "M", "technician");
+//	    likeMoviesAPI.addUser("Jenna", "Parker",33, "F", "other");
+//
+//	    Collection<User> users = likeMoviesAPI.getUsers();
+//	    System.out.println("\n" + users);
+//	    System.out.println("ilosc uzytkownikow  " + users.size() );
+//	    System.out.println("numer przypisany do u " + users.hashCode());
+//
+//	    
+//	    User homer = likeMoviesAPI.getUserByAge(0);
+//	    likeMoviesAPI.createActivity(homer.id, "walk", "tramore", 1000);
+//	    
+//	    likeMoviesAPI.store(); 
+//	  
+//	}
 	}
 	
 	//////////////////////////////////////
