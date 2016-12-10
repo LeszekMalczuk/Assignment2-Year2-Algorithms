@@ -8,6 +8,9 @@ import com.google.common.base.Optional;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import utils.FileLogger;
 import utils.Serializer;
 import models.Movie;
 //	import models.Activity;
@@ -16,16 +19,31 @@ import models.Rating;
 import models.User;
 
 public class LikeMoviesAPI 
+
 {
-	private Serializer serializer;
+	
+	public Serializer serializer;
 
-	private Map<Long,   User>   userIndex       = new HashMap<>();
-	private Map<Integer, User>   ageIndex      = new HashMap<>();
-	private Map<String, User>   genderIndex      = new HashMap<>();
-	private Map<Long, Rating> activitiesIndex = new HashMap<>();
+	public Map<Long,   User>   userIndex       = new HashMap<>();
+	public Map<String, User>   genderIndex      = new HashMap<>();
+	
 
+
+	@SuppressWarnings("unchecked")
 	public LikeMoviesAPI()
-	{}
+	{
+		HashMap<Long, User> User;
+
+		{
+			try {
+				User = (HashMap<Long, models.User>) FileLogger.importUser();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	 }
+	
 
 	public LikeMoviesAPI(Serializer serializer)
 	{
@@ -36,8 +54,7 @@ public class LikeMoviesAPI
 	public void load() throws Exception
 	{
 		serializer.read();
-		activitiesIndex = (Map<Long, Rating>) serializer.pop();
-		ageIndex      = (Map<Integer, User>)   serializer.pop();
+		
 		userIndex       = (Map<Long, User>)     serializer.pop();
 		genderIndex       = (Map<String, User>)     serializer.pop();
 		
@@ -46,9 +63,9 @@ public class LikeMoviesAPI
 	public void store() throws Exception
 	{
 		serializer.push(userIndex);
-		serializer.push(ageIndex);
+	
 		serializer.push(genderIndex);
-		serializer.push(activitiesIndex);
+	
 		serializer.write(); 
 	}
 
@@ -57,26 +74,22 @@ public class LikeMoviesAPI
 		return userIndex.values();
 	}
 
-//	public  void deleteUsers() 
-//	{
-//		userIndex.clear();
-//		ageIndex.clear();
-//		genderIndex.clear();
-//	}
 
 	public User addUser(String firstName, String lastName, int age, String gender, String ocupational) 
 	{
 		User user = new User (firstName, lastName, age, gender, ocupational);
 		userIndex.put(user.id, user);
-		ageIndex.put(age, user);
+//		Map<Long, User> ageIndex;
+	//	ageIndex.put(age, user);
 		genderIndex.put(gender, user);
 		return user;
 	}
-
-	public User getUserByAge(int age) 
-	{
-		return ageIndex.get(age);
-	}
+//
+//	public User getUserByAge(int age) 
+//	{
+//		Map<Long, User> ageIndex = null;
+//		return ageIndex.get(age);
+//	}
 
 	public User getUser(Long id) 
 	{
@@ -107,10 +120,10 @@ public class LikeMoviesAPI
 //		return rating;
 //	}
 
-	public Rating getRating (Long id)
-	{
-		return activitiesIndex.get(id);
-	}
+//	public Rating getRating (Long id)
+//	{
+//		return activitiesIndex.get(id);
+//	}
 
 //	public void addLocation (Long id, float latitude, float longitude)
 //	{
@@ -123,12 +136,16 @@ public class LikeMoviesAPI
 
 	public void removeUser(Long id) {
 		// TODO Auto-generated method stub
-		
+		userIndex.remove(id);
+		return;
 	}
 
 	public void addMovie(String title, int date, String url) {
 		// TODO Auto-generated method stub
-		
+		Movie movie = new Movie(title, date, url);
+		Map<Long, User> movieIndex;
+//		movieIndex.put(movie.getId(), movie);
+		return;
 	}
 
 
@@ -148,13 +165,13 @@ public class LikeMoviesAPI
 		this.userIndex = userIndex;
 	}
 
-	public Map<Integer, User> getAgeIndex() {
-		return ageIndex;
-	}
-
-	public void setAgeIndex(Map<Integer, User> ageIndex) {
-		this.ageIndex = ageIndex;
-	}
+//	public Map<Integer, User> getAgeIndex() {
+//		return ageIndex;
+//	}
+//
+//	public void setAgeIndex(Map<Integer, User> ageIndex) {
+//		this.ageIndex = ageIndex;
+//	}
 
 	public Map<String, User> getGenderIndex() {
 		return genderIndex;
@@ -164,13 +181,13 @@ public class LikeMoviesAPI
 		this.genderIndex = genderIndex;
 	}
 
-	public Map<Long, Rating> getActivitiesIndex() {
-		return activitiesIndex;
-	}
-
-	public void setActivitiesIndex(Map<Long, Rating> activitiesIndex) {
-		this.activitiesIndex = activitiesIndex;
-	}
+//	public Map<Long, Rating> getActivitiesIndex() {
+//		return activitiesIndex;
+//	}
+//
+//	public void setActivitiesIndex(Map<Long, Rating> activitiesIndex) {
+//		this.activitiesIndex = activitiesIndex;
+//	}
 
 	public void getMovie(long movieID) {
 		// TODO Auto-generated method stub

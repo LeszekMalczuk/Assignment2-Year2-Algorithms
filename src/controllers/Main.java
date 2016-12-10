@@ -82,7 +82,7 @@ import models.User;
 //
 		  public static void main1(String[] args) throws Exception
 	  {    
-	    File  datastore = new File("datastoreUsers1.xml");
+	    File  datastore = new File("datastoreUsers.xml");
 	    Serializer serializer = new XMLSerializer(datastore);
 	    
 	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
@@ -103,8 +103,8 @@ import models.User;
 	    System.out.println("numer przypisany do u " + users.hashCode());
 
 	    
-	    User user = likeMoviesAPI.getUserByAge(0);
-	    likeMoviesAPI.getUser(user.id);
+	 //   User user = likeMoviesAPI.getUserByAge(0);
+	//    likeMoviesAPI.getUser(user.id);
 	    
 	    likeMoviesAPI.store(); 
 	  
@@ -193,12 +193,12 @@ import models.User;
 	  	 likeMovies.addRating(rate);		//done 
 	   }
 
-	   
-	   @Command(description="Get a user rating")
-	   public void getRating (@Param(name="by id") long id)
-	   {
-	  	 likeMovies.getRating(id);
-	   }
+//	   
+//	   @Command(description="Get a user rating")
+//	   public void getRating (@Param(name="by id") long id)
+//	   {
+//	  	 likeMovies.addRating(id);
+//	   }
 	   
 	   @Command(description="Get  user recomendation")
 	   public void getUserRecomendation (@Param(name="by user id") long id)
@@ -225,8 +225,9 @@ import models.User;
 //			shell.commandLoop();
 //			main.TenHotestMovie.store();
 		}
+	   
 	   }
 	   
 	  
-
+	
 

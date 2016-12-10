@@ -18,12 +18,13 @@ public class Movie {
 	public String video_date;
 	
 	public Map<Long, Movie> movieId1 = new HashMap<>();
+	public long id;
 	
 	
 //	public Movie() 
 //	{	
 //	}
-	public Movie() 
+	public Movie(String title2, int date, String url2) 
 	{	
 	}
 	public Movie(long movieID, String title, String releaseData, String url) {
