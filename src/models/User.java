@@ -21,6 +21,8 @@ public class User {
 
 	public int nogender;
 
+	
+
 	public User() 
 	{
 	}
@@ -69,5 +71,75 @@ public class User {
 			return false;
 		}
 	}
+	public static Long getCounter() {
+		return counter;
+	}
 
+	public static void setCounter(Long counter) {
+		User.counter = counter;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getOcupational() {
+		return ocupational;
+	}
+
+	public void setOcupational(String ocupational) {
+		this.ocupational = ocupational;
+	}
+
+	public Map<Long, Rating> getRating() {
+		return rating;
+	}
+
+	public void setRating(Map<Long, Rating> rating) {
+		this.rating = rating;
+	}
+
+	public int getNogender() {
+		return nogender;
+	}
+
+	public void setNogender(int nogender) {
+		this.nogender = nogender;
+	}
 }

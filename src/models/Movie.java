@@ -11,30 +11,33 @@ import com.google.common.base.MoreObjects.ToStringHelper;
 
 public class Movie {
 	
-	public long id;
+	public long movieID;
 	public String title;
 	public String releaseData;
 	public String url;
-	
+	public String video_date;
 	
 	public Map<Long, Movie> movieId1 = new HashMap<>();
+	
 	
 //	public Movie() 
 //	{	
 //	}
-	public Movie(String title, String releaseData,String url, long id) {
-		
-		this.id = id; 
+	public Movie() 
+	{	
+	}
+	public Movie(long movieID, String title, String releaseData, String url) {
+		// TODO Auto-generated constructor stub
+		this.movieID = movieID; 
 		this.title = title;
 		this.releaseData = releaseData;
 		this.url = url;
-		
 	}
 	public long getId() {
-		return id;
+		return movieID;
 	}
 	public void setId(long id) {
-		this.id = id;
+		this.movieID = id;
 	}
 	public String getTitle() {
 		return title;
@@ -56,7 +59,7 @@ public class Movie {
 	}
 	public String toString() 
 	{
-		return ToStringHelper(this).addValue(id)
+		return ToStringHelper(this).addValue(movieID)
 									.addValue(title)
 									.addValue(releaseData)
 									.addValue(url)
@@ -65,7 +68,7 @@ public class Movie {
 	 @Override  
 	  public int hashCode()  
 	  {  
-	     return Objects.hashCode( this.id, this.title, this.releaseData, this.url);  
+	     return Objects.hashCode( this.movieID, this.title, this.releaseData, this.url);  
 	  }  
 	private ToStringHelper ToStringHelper(Movie movie) {
 		// TODO Auto-generated method stub
@@ -73,3 +76,29 @@ public class Movie {
 	}
 
 }
+//addUser(firstName,lastName,age,gender,occupation)   66
+//removeUser(userID)				/					123
+//addMovie(title, year, url)		/					128
+//addRating(userID, movieID, rating)	/
+//getMovie(movieID)					/				174
+//getUserRatings(userID)		/
+//getUserRecommendations(userID)
+//getTopTenMovies()
+//load()	pop
+//write()	push
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
