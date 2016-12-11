@@ -17,11 +17,5 @@ public class RatingTest {
 		assertEquals(4, rating.rating);
 	}
 
-	@Test
-	public void testToString()
-	{
-
-		assertEquals ("Rating{" + rating.user_id + ", " + rating.iteam_id + ", " + rating.rating + "}" ,rating.toString());
-	}
 
 }

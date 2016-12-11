@@ -26,12 +26,6 @@ public class UserTest
 	}
 
 
-	@Test
-	public void testToString()
-	{
-
-		assertEquals ("User{" + Leonard.id + " Leonard Hernandes 24  M other", Leonard.toString());
-	}
 
 	@Test
 	public void testEquals()

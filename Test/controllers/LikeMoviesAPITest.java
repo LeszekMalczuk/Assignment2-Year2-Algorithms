@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import models.Movie;
+import models.Rating;
 import models.User;
 
 //import controllers.PacemakerAPI;
@@ -27,7 +28,7 @@ public class LikeMoviesAPITest {
 	public void setup()
 	{
 		likeMoviesAPI = new LikeMoviesAPI();
-	
+
 	}
 
 	@After
@@ -44,7 +45,7 @@ public class LikeMoviesAPITest {
 		assertEquals (1, likeMoviesAPI.getUsers().size());
 		assertEquals(user, likeMoviesAPI.getUser(user.id));
 	}  
-	
+
 	@Test
 	public void testRemoveUsers()
 	{
@@ -54,7 +55,7 @@ public class LikeMoviesAPITest {
 		likeMoviesAPI.removeUser(user.id);
 		assertEquals (0, likeMoviesAPI.getUsers().size());    
 	}  
-	
+
 	@Test
 	public void testAddMovie()
 	{
@@ -63,51 +64,17 @@ public class LikeMoviesAPITest {
 		assertEquals (1, likeMoviesAPI.getMovies().size());
 		assertEquals(movie, likeMoviesAPI.getMovie(movie.movieID));
 	} 
-	//	  
-	//	  @Test
-	//	  public void testAddActivity()
-	//	  {
-	//	    User marge = likeMoviesAPI.getUserByAge("marge@simpson.com");
-	//	    Activity activity = likeMoviesAPI.createActivity(marge.id, activities[0].type, activities[0].location, activities[0].distance);
-	//	    Activity returnedActivity = likeMoviesAPI.getActivity(activity.id);
-	//	    assertEquals(activities[0],  returnedActivity);
-	//	    assertNotSame(activities[0], returnedActivity);
-	//	  }
-	//	  
-	//	  @Test
-	//	  public void testAddActivityWithSingleLocation() 
-	//	  {
-	//	    User marge = likeMoviesAPI.getUserByAge("33");
-	//	    Long activityId = likeMoviesAPI.createActivity(marge.id, activities[0].type, activities[0].location, activities[0].distance).id;
-	//
-	//	    likeMoviesAPI.addLocation(activityId, locations[0].latitude, locations[0].longitude);
-	//
-	//	    Activity activity = likeMoviesAPI.getActivity(activityId);
-	//	    assertEquals (1, activity.route.size());
-	//	    assertEquals(0.0001, locations[0].latitude,  activity.route.get(0).latitude);
-	//	    assertEquals(0.0001, locations[0].longitude, activity.route.get(0).longitude);   
-	//	  }
-	//	  
-	//	  @Test
-	//	  public void testAddActivityWithMultipleLocation()
-	//	  {
-	//	    User marge = likeMoviesAPI.getUserByAge("marge@simpson.com");
-	//	    Long activityId = likeMoviesAPI.createActivity(marge.id, activities[0].type, activities[0].location, activities[0].distance).id;
-	//
-	//	    for (Location location : locations)
-	//	    {
-	//	      likeMoviesAPI.addLocation(activityId, location.latitude, location.longitude);      
-	//	    }
-	//
-	//	    Activity activity = likeMoviesAPI.getActivity(activityId);
-	//	    assertEquals (locations.length, activity.route.size());
-	//	    int i = 0;
-	//	    for (Location location : activity.route)
-	//	    {
-	//	      assertEquals(location, locations[i]);
-	//	      i++;
-	//	    }
-	//	  } 
+
+	@Test
+	public void testAddTating()
+	{
+		assertEquals (0, likeMoviesAPI.ratingMenu.size());
+		Rating rating = new Rating(2L, 6L, 5);
+		assertEquals (1, likeMoviesAPI.ratingMenu.size());
+		assertEquals(rating , likeMoviesAPI.ratingMenu.get(0));
+	}
+	
+	
 }
 
 
