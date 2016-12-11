@@ -10,18 +10,25 @@ public class User {
 
 	static Long   counter = 0l;
 
-	public Long   id;
+	public static Long   id;
 	public String firstName;
 	public String surname;
 	public int age;
 	public String gender;
 	public String ocupational;
 
-	public Map<Long, Rating> rating = new HashMap<>();
+	public Map<Long, User> rating = new HashMap<>();
 
 	public int nogender;
 
-	
+	public void name() {
+		//User( 123456,"Leonard", "Hernandes",  24, "M", "other");
+	}
+//
+//	private void User(int i, String string, String string2, int j, String string3, String string4) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	public User() 
 	{
@@ -29,7 +36,7 @@ public class User {
 
 	public User(String firstName, String surname, int age, String gender, String ocupational)
 	{
-		this.id        = counter++;
+		User.id        = counter++;
 		this.firstName = firstName;
 		this.surname = surname;
 		this.age = age;
@@ -46,6 +53,7 @@ public class User {
 				.addValue(gender) 
 				.addValue(ocupational)
 				.toString();
+		
 	}
 
 	@Override  
@@ -84,7 +92,7 @@ public class User {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		User.id = id;
 	}
 
 	public String getFirstName() {
@@ -127,19 +135,5 @@ public class User {
 		this.ocupational = ocupational;
 	}
 
-	public Map<Long, Rating> getRating() {
-		return rating;
-	}
 
-	public void setRating(Map<Long, Rating> rating) {
-		this.rating = rating;
-	}
-
-	public int getNogender() {
-		return nogender;
-	}
-
-	public void setNogender(int nogender) {
-		this.nogender = nogender;
-	}
 }

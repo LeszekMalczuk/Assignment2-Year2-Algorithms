@@ -2,10 +2,14 @@ package controllers;
 
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+
 import com.google.common.base.Optional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -21,22 +25,21 @@ import models.User;
 public class LikeMoviesAPI 
 
 {
-	
 	public Serializer serializer;
 
-	public Map<Long,   User>   userIndex       = new HashMap<>();
-	public Map<String, User>   genderIndex      = new HashMap<>();
+	public Map<Long,   User>   id       = new HashMap<>();
+	public Map<Long, Movie>   movieID      = new HashMap<>();
 	
 
 
 	@SuppressWarnings("unchecked")
 	public LikeMoviesAPI()
 	{
-		HashMap<Long, User> User;
+		HashMap<Long, Movie> Movie;
 
 		{
 			try {
-				User = (HashMap<Long, models.User>) FileLogger.importUser();
+				Movie = (HashMap<Long, models.Movie>) FileLogger.importUser();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -55,51 +58,46 @@ public class LikeMoviesAPI
 	{
 		serializer.read();
 		
-		userIndex       = (Map<Long, User>)     serializer.pop();
-		genderIndex       = (Map<String, User>)     serializer.pop();
+		id       = (Map<Long, User>)     serializer.pop();
+		movieID  = (Map<Long, Movie>)    serializer.pop();
 		
 	}
 
 	public void store() throws Exception
 	{
-		serializer.push(userIndex);
-	
-		serializer.push(genderIndex);
-	
+		serializer.push(id);
+		serializer.push(movieID);
 		serializer.write(); 
 	}
 
 	public Collection<User> getUsers ()
 	{
-		return userIndex.values();
+		return id.values();
 	}
+	public void removeUser(Long id2) {
+	    id.clear();
+	    movieID.clear();
 
+	}
 
 	public User addUser(String firstName, String lastName, int age, String gender, String ocupational) 
 	{
 		User user = new User (firstName, lastName, age, gender, ocupational);
-		userIndex.put(user.id, user);
-//		Map<Long, User> ageIndex;
-	//	ageIndex.put(age, user);
-		genderIndex.put(gender, user);
-		return user;
-	}
-//
-//	public User getUserByAge(int age) 
-//	{
-//		Map<Long, User> ageIndex = null;
-//		return ageIndex.get(age);
-//	}
+		id.put(User.id, user);
 
-	public User getUser(Long id) 
-	{
-		return userIndex.get(id);
+		return user; 
 	}
-	public User getUserByGender(String gender) 
+
+
+	public String getUser(Long id) 
 	{
-		return userIndex.get(gender);
-		
+		 return Long.toString(id);
 	}
+//	public User getUserByGender(String gender) 
+//	{
+//		return id.get(gender);
+//		
+//	}
 
 //	public void deleteUser(Long id) 
 //	{
@@ -134,11 +132,7 @@ public class LikeMoviesAPI
 //		}
 //	}
 
-	public void removeUser(Long id) {
-		// TODO Auto-generated method stub
-		userIndex.remove(id);
-		return;
-	}
+
 
 	public void addMovie(String title, int date, String url) {
 		// TODO Auto-generated method stub
@@ -158,38 +152,16 @@ public class LikeMoviesAPI
 	}
 
 	public Map<Long, User> getUserIndex() {
-		return userIndex;
+		return id;
 	}
 
 	public void setUserIndex(Map<Long, User> userIndex) {
-		this.userIndex = userIndex;
+		this.id = userIndex;
 	}
 
-//	public Map<Integer, User> getAgeIndex() {
-//		return ageIndex;
-//	}
-//
-//	public void setAgeIndex(Map<Integer, User> ageIndex) {
-//		this.ageIndex = ageIndex;
-//	}
 
-	public Map<String, User> getGenderIndex() {
-		return genderIndex;
-	}
 
-	public void setGenderIndex(Map<String, User> genderIndex) {
-		this.genderIndex = genderIndex;
-	}
-
-//	public Map<Long, Rating> getActivitiesIndex() {
-//		return activitiesIndex;
-//	}
-//
-//	public void setActivitiesIndex(Map<Long, Rating> activitiesIndex) {
-//		this.activitiesIndex = activitiesIndex;
-//	}
-
-	public void getMovie(long movieID) {
+	public ArrayList<Movie> getMovie(long movieID) {
 		// TODO Auto-generated method stub
 		// kod do przeszukiwania listy filmów po nazwie
 //		int count = 1;
@@ -224,6 +196,15 @@ public class LikeMoviesAPI
 //		}
 //		return result;
 		
+		int n = 10;
+		List<Movie> movies = new ArrayList<Movie>();
+	//	Collections.sort((List<Movie>) movies);
+		n = (n > movies.size()) ? movies.size() : n;
+		return new ArrayList<Movie>(movies.subList(0, n));
+		
+		
+		
+		
 	}
 
 	public Collection<Movie> getMovie() {
@@ -240,10 +221,5 @@ public class LikeMoviesAPI
 		// TODO Auto-generated method stub
 		
 	}
-
-//	public void rateMovie(int rate) {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 }

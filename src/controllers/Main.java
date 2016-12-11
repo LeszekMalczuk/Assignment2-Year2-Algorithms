@@ -82,7 +82,7 @@ import models.User;
 //
 		  public static void main1(String[] args) throws Exception
 	  {    
-	    File  datastore = new File("datastoreUsers.xml");
+	    File  datastore = new File("datastoreUsers33.xml");
 	    Serializer serializer = new XMLSerializer(datastore);
 	    
 	    LikeMoviesAPI likeMoviesAPI = new LikeMoviesAPI(serializer);
@@ -103,9 +103,9 @@ import models.User;
 	    System.out.println("numer przypisany do u " + users.hashCode());
 
 	    
-	 //   User user = likeMoviesAPI.getUserByAge(0);
-	//    likeMoviesAPI.getUser(user.id);
-	    
+//	    User user = likeMoviesAPI.getUser((long) 0);
+//	    likeMoviesAPI.getUser(user.id);
+//	    
 	    likeMoviesAPI.store(); 
 	  
 	}

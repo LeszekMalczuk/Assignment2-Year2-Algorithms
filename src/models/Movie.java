@@ -11,7 +11,7 @@ import com.google.common.base.MoreObjects.ToStringHelper;
 
 public class Movie {
 	
-	public long movieID;
+	public static long movieID;
 	public String title;
 	public String releaseData;
 	public String url;
@@ -29,10 +29,28 @@ public class Movie {
 	}
 	public Movie(long movieID, String title, String releaseData, String url) {
 		// TODO Auto-generated constructor stub
-		this.movieID = movieID; 
+		Movie.movieID = movieID; 
 		this.title = title;
 		this.releaseData = releaseData;
 		this.url = url;
+	}
+	
+	public String toString() 
+	{
+		return ToStringHelper(this).addValue(movieID)
+									.addValue(title)
+									.addValue(releaseData)
+									.addValue(url)
+									.toString();	
+	}
+	 @Override  
+	  public int hashCode()  
+	  {  
+	     return Objects.hashCode( this.movieID, this.title, this.releaseData, this.url);  
+	  }  
+	private ToStringHelper ToStringHelper(Movie movie) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	public long getId() {
 		return movieID;
@@ -58,24 +76,6 @@ public class Movie {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String toString() 
-	{
-		return ToStringHelper(this).addValue(movieID)
-									.addValue(title)
-									.addValue(releaseData)
-									.addValue(url)
-									.toString();	
-	}
-	 @Override  
-	  public int hashCode()  
-	  {  
-	     return Objects.hashCode( this.movieID, this.title, this.releaseData, this.url);  
-	  }  
-	private ToStringHelper ToStringHelper(Movie movie) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
 //addUser(firstName,lastName,age,gender,occupation)   66
 //removeUser(userID)				/					123
