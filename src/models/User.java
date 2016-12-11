@@ -8,9 +8,9 @@ import java.util.Map;
 import com.google.common.base.Objects;
 public class User {
 
-	static Long   counter = 0l;
+	public static Long   counter = 0L;
 
-	public static Long   id;
+	public long   id;
 	public String firstName;
 	public String surname;
 	public int age;
@@ -19,34 +19,27 @@ public class User {
 
 	public Map<Long, User> rating = new HashMap<>();
 
-	public int nogender;
+//	public int nogender;
 
-	public void name() {
-		//User( 123456,"Leonard", "Hernandes",  24, "M", "other");
-	}
-//
-//	private void User(int i, String string, String string2, int j, String string3, String string4) {
-//		// TODO Auto-generated method stub
-//		
-//	}
 
 	public User() 
 	{
+		this.id        = ++counter;
 	}
 
 	public User(String firstName, String surname, int age, String gender, String ocupational)
 	{
-		User.id        = counter++;
+		this.id        = ++counter;
 		this.firstName = firstName;
 		this.surname = surname;
 		this.age = age;
 		this.gender = gender;
 		this.ocupational = ocupational;
 	}
-
+	@Override
 	public String toString()
 	{
-		return toStringHelper(this).addValue(id)
+		return toStringHelper(this).addValue("\n" + id)
 				.addValue(firstName)
 				.addValue(surname)
 				.addValue(age)
@@ -91,9 +84,9 @@ public class User {
 		return id;
 	}
 
-	public void setId(Long id) {
-		User.id = id;
-	}
+//	public void setId(Long id) {
+//		User.id = id;
+//	}
 
 	public String getFirstName() {
 		return firstName;
